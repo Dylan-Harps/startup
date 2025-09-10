@@ -15,15 +15,19 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] A concise and compelling elevator pitch
 - [x] Description of key features
 - [x] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
 Have you ever wanted to learn a new language, but struggle to see any growth when you study? Try GrowLang, where by taking language lessons, you cultivate your own garden! As you develop your lovely plants, you also develop your language skills! As you learn more topics, you get to collect many kinds of plants. Just remember to water them regularly by taking time to review what you have learned! 
 
 ### Design
-
-![Design image](placeholder.png)
+Login screen:
+![Login Screen](login-screen.png)
+Garden screen:
+![Garden Screen](garden-screen.png)
+Lesson screen:
+![Lesson Screen](lesson-screen.png)
 
 Here is a sequence diagram for completing a lesson/watering a plant:
 
