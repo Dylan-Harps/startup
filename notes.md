@@ -20,4 +20,8 @@ type :wq to save and equit out of vim
 
 ## HTML
 Command to deploy simon: ./deployFiles.sh -k byu/"CS 260"/dylan-harps-keypair.pem -h dylanharps.click -s simon
+Command to deploy startup: ./deployFiles.sh -k byu/"CS 260"/dylan-harps-keypair.pem -h dylanharps.click -s startup
 Deploying allows me to edit files outside of the server and then deploy them to the server. 
+### Structure
+Links: ```<a href="link">Hypertext</a>```
+Images: ```<img src="link to image" alt="alt text" width="300">```
