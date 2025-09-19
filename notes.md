@@ -17,3 +17,7 @@ Command to ssh: ssh -i byu/"CS 260"/dylan-harps-keypair.pem ubuntu@3.220.198.243
 Domain is registered thru Namecheap
 Domain: dylanharps.click
 type :wq to save and equit out of vim
+
+## HTML
+Command to deploy simon: ./deployFiles.sh -k byu/"CS 260"/dylan-harps-keypair.pem -h dylanharps.click -s simon
+Deploying allows me to edit files outside of the server and then deploy them to the server. 
