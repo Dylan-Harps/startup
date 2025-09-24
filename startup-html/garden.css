@@ -1,0 +1,8 @@
+.tile {
+        width: 100px;
+        height: 100px;
+        background-color: lightgray;
+        border: 1px solid black;
+        transform: rotateZ(45deg) rotate3d(1, -1, 0, 70deg);
+        transform-origin: bottom center;
+    }
