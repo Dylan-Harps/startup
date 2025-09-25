@@ -3,8 +3,7 @@
     transform-origin: center;
     display: inline-block;
     vertical-align: middle;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
     left: 0;
     top: 0;
     text-align: center;
@@ -12,6 +11,7 @@
 
 .garden-row {
     width: 500px;
+    height: 100%;
     white-space: nowrap;
     font-size:0;
 }

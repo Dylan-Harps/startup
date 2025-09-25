@@ -26,11 +26,19 @@
 
     <main>
       <h1>Quiz</h1>
-      <div id="picture" class="picture-box"><img width="400px" src="lesson-screen.png" alt="quiz placeholder" /></div>
-
-      <p>
-        Quizzical
-      </p>
+      <div class="progress-bar">
+        <label for="progress-bar">Progress:</label>
+        <progress id="progress-bar" value="1" max="5"></progress>
+      </div>
+      <h1>Fill in the blank:</h1>
+      <div class="question">Question goes here</div>
+      <div class="answer-options">
+        <button class="option">Option 1</button>
+        <button class="option">Option 2</button>
+        <button class="option">Option 3</button>
+        <button class="option">Option 4</button>
+      </div>
+      <button class="confirm-answer">Confirm Answer</button>
     </main>
 
     <footer>
