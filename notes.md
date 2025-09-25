@@ -8,9 +8,6 @@
 - [Canvas](https://byu.instructure.com)
 - [MDN](https://developer.mozilla.org)
 
-## Introductory Assignment
-I already had a GitHub account but since I've always used an IDE to do my commits and pulls, I'm still not used to running commands in the command line. It was nice to practice that. 
-
 ## AWS Server
 Elastic IP Address: 3.220.198.243
 
@@ -20,15 +17,18 @@ Domain is registered thru Namecheap
 
 Domain: dylanharps.click
 
-type :wq to save and equit out of vim
+## Using VIM
+To go into editing mode, type 'i'.
 
-## HTML
+To exit editing mode, press 'esc'.
+
+To then save and quit, type ':wq'.
+
+## DeployFiles
+Deploying allows me to edit files outside of the server and then deploy them to the server. 
+
+Go to the directory of the files I want to deploy (i.e. byu/"CS 260"/startup/startup-html), then use the following:
+
 Command to deploy simon: ./deployFiles.sh -k byu/"CS 260"/dylan-harps-keypair.pem -h dylanharps.click -s simon
 
-Command to deploy startup: ./deployFiles.sh -k byu/"CS 260"/dylan-harps-keypair.pem -h dylanharps.click -s startup
-
-Deploying allows me to edit files outside of the server and then deploy them to the server. 
-### Structure
-Links: ```<a href="link">Hypertext</a>```
-
-Images: ```<img src="link to image" alt="alt text" width="300">```
+Command to deploy startup: ./../simon-html/deployFiles.sh -k ../../dylan-harps-keypair.pem -h dylanharps.click -s startup
