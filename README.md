@@ -71,21 +71,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I created 4 pages for each view: `index.html` (login), `garden.html`, `quiz.html`, and `about.html`
+- [x] **Proper HTML element usage** - I used various html elements such as header, footer, main, nav, form, button, div, and img
+- [x] **Links** - There are links in the header to each other page. There is a link to GitHub in the footer
+- [x] **Text** - There is text where necessary, especially in the about page
+- [ ] **3rd party API placeholder** - What do I do here??? I can't find 3rd-party APIs mentioned anywhere except in the requirements!
+- [x] **Images** - Images of what the application will look like are found in the about page
+- [x] **Login placeholder** - Login placeholder on the login page (`index.html`)
+- [x] **DB data placeholder** - The tiles on the garden page show which plants have been unlocked by the user.
+- [x] **WebSocket placeholder** - The tiles on the garden page also show the state of the plants, which dehydrate over time
 
 ## 🚀 CSS deliverable
 
