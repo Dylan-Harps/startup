@@ -94,7 +94,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Header, footer, and main content body** - These elements are styled in main.css, whith page-specific stylings in their corresponding css files
 - [x] **Navigation elements** - Done using Bootstrap
 - [x] **Responsive to window resizing** - Done using Bootstrap and flex
-- [ ] **Application elements** - I did not complete this part of the deliverable.
+- [x] **Application elements** - Styled and formatted elements
 - [x] **Application text content** - Text is formatted correctly
 - [x] **Application images** - Images are unchanged in the about page
 
