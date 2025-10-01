@@ -4,8 +4,3 @@
     background-color: white;
     padding: clamp(2rem, 5vw, 2rem);
 }
-
-.btn-primary {
-    background-color: orangered !important;
-    border-color: transparent !important;
-}

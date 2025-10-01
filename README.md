@@ -95,8 +95,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Navigation elements** - Done using Bootstrap
 - [x] **Responsive to window resizing** - Done using Bootstrap and flex
 - [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Application text content** - Text is formatted correctly
+- [x] **Application images** - Images are unchanged in the about page
 
 ## 🚀 React part 1: Routing deliverable
 
