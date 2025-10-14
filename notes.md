@@ -34,6 +34,11 @@ Follow the following steps:
 6. Use the code the package provides in your JavaScript
 7. Run your code with ```node index.js```
 
+## Using Vite
+Using ```npm run dev``` runs a react build from the Vite server.
+'h' shows the possible commands.
+Using ```npm run build``` putputs it into a deploy-ready subdirectory ```dist```.
+
 
 ## DeployFiles
 Deploying allows me to edit files outside of the server and then deploy them to the server. 
