@@ -45,6 +45,10 @@ Deploying allows me to edit files outside of the server and then deploy them to 
 
 Go to the directory of the files I want to deploy (i.e. byu/"CS 260"/startup/startup-html), then use the following:
 
-Command to deploy simon: ./deployFiles.sh -k ../../dylan-harps-keypair.pem -h dylanharps.click -s simon
+Command to deploy simon: ./deployFiles.sh -k ../dylan-harps-keypair.pem -h dylanharps.click -s simon
 
 Command to deploy startup: ./../simon-html/deployFiles.sh -k ../../dylan-harps-keypair.pem -h dylanharps.click -s startup
+
+Command to deploy simon react: ./deployReact.sh -k ../dylan-harps-keypair.pem -h dylanharps.click -s simon
+
+Command to deploy startup react: ./../deployReact.sh -k ../../dylan-harps-keypair.pem -h dylanharps.click -s startup
