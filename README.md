@@ -102,9 +102,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - Followed the instructions and made/modified the react application
+- [x] **Components** - Forked the CodePen and added a component to change the background color
+- [x] **Router** - Forked the CodePen and added orange
 
 ## 🚀 React part 2: Reactivity deliverable
 
