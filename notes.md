@@ -51,4 +51,4 @@ Command to deploy startup: ./../simon-html/deployFiles.sh -k ../../dylan-harps-k
 
 Command to deploy simon react: ./deployReact.sh -k ../dylan-harps-keypair.pem -h dylanharps.click -s simon
 
-Command to deploy startup react: ./../deployReact.sh -k ../../dylan-harps-keypair.pem -h dylanharps.click -s startup
+Command to deploy startup react: ./deployReact.sh -k ../../dylan-harps-keypair.pem -h dylanharps.click -s startup
