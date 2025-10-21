@@ -1,3 +1,15 @@
+#quizmain {
+    justify-content: flex-start;
+}
+
+.progress {
+    width: 75%
+}
+
+.progress-bar {
+    width: 20%
+}
+
 .quiz-progress {
     display: flex;
     flex-direction: row;
@@ -36,6 +48,7 @@
 }
 
 .option {
+    background-color: white;
     width: 45%;
     height: 3rem;
 }

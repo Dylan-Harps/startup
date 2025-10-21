@@ -4,11 +4,11 @@ import './quiz.css';
 
 export function Quiz() {
   return (
-    <main className="container-fluid bg-secondary text-center" style="justify-content: flex-start">
+    <main className="container-fluid bg-secondary text-center" id="quizmain">
       <div className="quiz-progress">
         <p>Question 1/5 (20%)</p>
-        <div className="progress" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="5" style="width: 75%">
-          <div className="progress-bar progress-bar-striped" style="width: 20%">20%</div>
+        <div className="progress" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="5">
+          <div className="progress-bar progress-bar-striped">20%</div>
         </div>
       </div>
 
