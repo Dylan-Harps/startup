@@ -20,11 +20,16 @@
     margin-top: 1rem;
 }
 
+.question-box {
+    border-radius: 15px;
+    border-color: black;
+    background-color: white;
+    padding: clamp(2rem, 5vw, 2rem);
+}
+
 .instruction {
     font-size: 1.5rem;
-    text-align: left;
     width: 100%;
-    margin-left: 5rem;
     margin-top: 1rem;
 }
 

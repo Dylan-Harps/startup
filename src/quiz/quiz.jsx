@@ -12,8 +12,10 @@ export function Quiz() {
         </div>
       </div>
 
-      <div className="instruction">Fill in the blank:</div>
-      <div className="question">Yo ____ mejorar mi español.</div>
+      <div className="question-box">
+        <div className="instruction">Fill in the blank:</div>
+        <div className="question">Yo ____ mejorar mi español.</div>
+      </div>
       <div className="answer-options">
         <button className="btn btn-outline-primary option">Option 1</button>
         <button className="btn btn-outline-primary option">Option 2</button>
