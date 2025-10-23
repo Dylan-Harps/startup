@@ -3,33 +3,70 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './quiz.css';
 import { QuizAnswers } from './quizAnswers';
 
-export function Quiz() {
+export function Quiz(quizID) {
   const [allowPlayer, setAllowPlayer] = React.useState(false);
   const [currQuestion, setCurrQuestion] = React.useState(0);
+  quizQuestions = getQuizQuestions(quizID);
   numCorrectQuestions = 0;
-  quizQuestions = [];
+  selectedAnswer = "";
   
   return (
     <main className="container-fluid bg-secondary text-center" id="quizmain">
-      <div className="quiz-progress">
-        <p>Question 1/5 (20%)</p>
-        <div className="progress" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="5">
-          <div className="progress-bar progress-bar-striped">20%</div>
+      <Progress currQuestion="1" numQuestions="5"></Progress>
+      <QuestionBox></QuestionBox>
+      <AnswerBox></AnswerBox>
+      <ConfirmationButton></ConfirmationButton>
+    </main>
+  );
+}
+
+const Progress = (currQuestion, numQuestions) => {
+  percentage = 100 * currQuestion / numQuestions;
+  return (
+    <div className="quiz-progress">
+        <p>`Question ${currQuestion}/${numQuestions} (${percentage}%)`</p>
+        <div className="progress" role="progressbar" aria-valuenow={percentage} aria-valuemin="0" aria-valuemax={numQuestions}>
+          <div className="progress-bar progress-bar-striped">{percentage}%</div>
         </div>
       </div>
+  );
+}
 
+const QuestionBox = () => {
+  return (
       <div className="question-box">
-        <div className="instruction">Fill in the blank:</div>
-        <div className="question">Yo ____ mejorar mi español.</div>
+        <div className="instruction">{currQuestion.instructions}</div>
+        <div className="question">{currQuestion.question}</div>
       </div>
-      <div className="answer-options">
-        <button className="btn btn-outline-primary option">Option 1</button>
-        <button className="btn btn-outline-primary option">Option 2</button>
-        <button className="btn btn-outline-primary option">Option 3</button>
-        <button className="btn btn-outline-primary option">Option 4</button>
-      </div>
-      <button className="btn btn-primary confirm-answer">Confirm Answer</button>
-    </main>
+  );
+}
+
+const AnswerBox = () => {
+  return (
+    <div className="answer-options">
+      <AnswerButton position="1"></AnswerButton>
+      <AnswerButton position="2"></AnswerButton>
+      <AnswerButton position="3"></AnswerButton>
+      <AnswerButton position="4"></AnswerButton>
+    </div>
+  );
+}
+
+const AnswerButton = (position) => {
+  return (
+    <button className="btn btn-outline-primary option"
+    onClick={() => onPressed(currQuestion.answers[position])}>
+      {currQuestion.answers[position]}
+    </button>
+  );
+}
+
+const ConfirmationButton = () => {
+  return (
+    <button className="btn btn-primary confirm-answer"
+    onClick={() => onConfirm(selectedAnswer)}>
+      Confirm Answer
+    </button>
   );
 }
 
@@ -53,21 +90,20 @@ function getQuizQuestions(quizID) {
 }
 
 React.useEffect(() => {
-    //when quiz first loads up, get the list of questions prepared
+    //idk
 }, []);
 
-async function onPressed(answer) {
-  if (allowPlayer) {
-    setAllowPlayer(false);
-    await buttons.get(answer).ref.current.press();
+function onPressed(answer) {
+  selectedAnswer = answer;
+}
 
-    if (questions[currQuestion].correct === answer) {
-      numCorrectQuestions++;
-    }
-
-    //move to next question, or end the quiz if done
-    //if done, state final score with a "continue" button
-    //setAllowPlayer(true);
-    //when they press continue, go back to garden screen
+function onConfirm(answer) {
+  if (questions[currQuestion].correct === answer) {
+    numCorrectQuestions++;
   }
+  selectedAnswer = "";
+
+  //move to next question, or end the quiz if done
+  //if done, state final score with a "continue" button
+  //when they press continue, go back to garden screen
 }
