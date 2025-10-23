@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './quiz.css';
+import { QuizAnswers } from './quizAnswers';
 
 export function Quiz() {
   return (
@@ -25,4 +26,23 @@ export function Quiz() {
       <button className="btn btn-primary confirm-answer">Confirm Answer</button>
     </main>
   );
+}
+
+function getQuizQuestions(quizID) {
+  //for each Quiz, return an array containing each question, possible answers, and the correct answer
+  if (quizID === 1) {
+    quesiton1 = new Question("Fill in the Blank:", "Yo ___ mejorar mi español.", ["querer","quieres","quiero","quieras"], "quiero");
+    quesiton2 = new Question("Fill in the Blank:", "Yo ___ el mejor.", ["es","soy","so","eres"], "soy");
+    quesiton3 = new Question("Fill in the Blank:", "Yo ___ un gato.", ["tengo","tienes","teno","tienen"], "tengo");
+    quesiton4 = new Question("Fill in the Blank:", "Yo ___ estudiar más.", ["debe","debo","deba","deber"], "debo");
+    quesiton5 = new Question("Fill in the Blank:", "Yo ___ cansado.", ["está","están","estás","estoy"], "estoy");
+    return new QuizAnswers(quizID, 5, [question1, question2, question3, question4, question5]);
+  } else {
+    quesiton1 = new Question("Here is a placeholder:", "The answer is A.", ["A","B","C","D"], "A");
+    quesiton2 = new Question("Here is a placeholder:", "The answer is B.", ["A","B","C","D"], "B");
+    quesiton3 = new Question("Here is a placeholder:", "The answer is C.", ["A","B","C","D"], "C");
+    quesiton4 = new Question("Here is a placeholder:", "The answer is D.", ["A","B","C","D"], "D");
+    quesiton5 = new Question("Here is a placeholder:", "The answer is A.", ["A","B","C","D"], "A");
+    return new QuizAnswers(quizID, 5, [question1, question2, question3, question4, question5]);
+  }
 }
