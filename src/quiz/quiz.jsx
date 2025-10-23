@@ -23,8 +23,8 @@ function getQuizQuestions(quizID) {
   }
 }
 
-const Progress = (currQuestion, numQuestions) => {
-  let percentage = 100 * currQuestion / numQuestions;
+const Progress = (currQuestionNumber, numQuestions) => {
+  let percentage = 100 * currQuestionNumber / numQuestions;
   return (
     <div className="quiz-progress">
       <div className="progress" role="progressbar" aria-valuenow={percentage} aria-valuemin="0" aria-valuemax={numQuestions}>
@@ -34,37 +34,36 @@ const Progress = (currQuestion, numQuestions) => {
   );
 }
 
+let quizQuestions;
+let currQuestion;
+let numCorrectQuestions = 0;
+let selectedAnswer = "";
+
 export function Quiz(quizID) {
   const [allowPlayer, setAllowPlayer] = React.useState(false);
-  const [currQuestion, setCurrQuestion] = React.useState(0);
-  let quizQuestions = getQuizQuestions(quizID);
-  //let correctAnswer = quizQuestions[{currQuestion}].correct;
-  let numCorrectQuestions = 0;
-  let selectedAnswer = "";
+  const [currQuestionNumber, setCurrQuestionNumber] = React.useState(0);
+  quizQuestions = getQuizQuestions(quizID).questions;
+  currQuestion = quizQuestions[currQuestionNumber];
+  let quizLength = getQuizQuestions(quizID).quizLength;
   
   return (
     <main className="container-fluid bg-secondary text-center" id="quizmain">
       <Progress 
-        currQuestion={currQuestion} 
-        numQuestions="5">
+        currQuestionNumber={currQuestionNumber} 
+        numQuestions={quizLength}>
       </Progress>
-      <QuestionBox 
-        currQuestion={currQuestion}>
+      <QuestionBox>
       </QuestionBox>
       <AnswerBox 
-        quizQuestions={quizQuestions} 
-        currQuestion={currQuestion}>
+        currQuestionNumber={currQuestionNumber}>
       </AnswerBox>
-      <ConfirmationButton 
-        selectedAnswer={selectedAnswer} 
-        correctAnswer="quiero"
-        numCorrectQuestions={numCorrectQuestions}>
+      <ConfirmationButton>
       </ConfirmationButton>
     </main>
   );
 }
 
-const QuestionBox = ({currQuestion}) => {
+const QuestionBox = () => {
   return (
       <div className="question-box">
         <div className="instruction">{currQuestion.instructions}</div>
@@ -73,41 +72,42 @@ const QuestionBox = ({currQuestion}) => {
   );
 }
 
-const AnswerBox = ({quizQuestions}, {currQuestion}) => {
+const AnswerBox = (currQuestionNumber) => {
   return (
     <div className="answer-options">
-      <AnswerButton position="1" quizQuestions={quizQuestions} currQuestion={currQuestion} selectedAnswer={selectedAnswer}></AnswerButton>
-      <AnswerButton position="2" quizQuestions={quizQuestions} currQuestion={currQuestion} selectedAnswer={selectedAnswer}></AnswerButton>
-      <AnswerButton position="3" quizQuestions={quizQuestions} currQuestion={currQuestion} selectedAnswer={selectedAnswer}></AnswerButton>
-      <AnswerButton position="4" quizQuestions={quizQuestions} currQuestion={currQuestion} selectedAnswer={selectedAnswer}></AnswerButton>
+      <AnswerButton position="1"></AnswerButton>
+      <AnswerButton position="2"></AnswerButton>
+      <AnswerButton position="3"></AnswerButton>
+      <AnswerButton position="4"></AnswerButton>
     </div>
   );
 }
 
-const AnswerButton = (position, {quizQuestions}, {currQuestion}, {selectedAnswer}) => {
+const AnswerButton = (position) => {
+  let option = currQuestion.answers[position];
   return (
     <button className="btn btn-outline-primary option"
-    onClick={() => onPressed({selectedAnswer}, quizQuestions[currQuestion].answers[position])}>
-      {quizQuestions[currQuestion].answers[position]}
+    onClick={() => onPressed({option})}>
+      {option}
     </button>
   );
 }
 
-const ConfirmationButton = ({selectedAnswer}, correctAnswer, {numCorrectQuestions}) => {
+const ConfirmationButton = () => {
   return (
     <button className="btn btn-primary confirm-answer"
-    onClick={() => onConfirm({selectedAnswer}, correctAnswer, {numCorrectQuestions})}>
+    onClick={() => onConfirm()}>
       Confirm Answer
     </button>
   );
 }
 
-function onPressed({selectedAnswer}, answer) {
+function onPressed(answer) {
   selectedAnswer = answer;
 }
 
-function onConfirm({selectedAnswer}, correctAnswer, {numCorrectQuestions}) {
-  if (correctAnswer === selectedAnswer) {
+function onConfirm() {
+  if (currQuestion.correct === selectedAnswer) {
     numCorrectQuestions++;
   }
   selectedAnswer = "";
