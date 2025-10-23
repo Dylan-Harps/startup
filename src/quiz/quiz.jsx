@@ -4,6 +4,11 @@ import './quiz.css';
 import { QuizAnswers } from './quizAnswers';
 
 export function Quiz() {
+  const [allowPlayer, setAllowPlayer] = React.useState(false);
+  const [currQuestion, setCurrQuestion] = React.useState(0);
+  numCorrectQuestions = 0;
+  quizQuestions = [];
+  
   return (
     <main className="container-fluid bg-secondary text-center" id="quizmain">
       <div className="quiz-progress">
@@ -44,5 +49,25 @@ function getQuizQuestions(quizID) {
     quesiton4 = new Question("Here is a placeholder:", "The answer is D.", ["A","B","C","D"], "D");
     quesiton5 = new Question("Here is a placeholder:", "The answer is A.", ["A","B","C","D"], "A");
     return new QuizAnswers(quizID, 5, [question1, question2, question3, question4, question5]);
+  }
+}
+
+React.useEffect(() => {
+    //when quiz first loads up, get the list of questions prepared
+}, []);
+
+async function onPressed(answer) {
+  if (allowPlayer) {
+    setAllowPlayer(false);
+    await buttons.get(answer).ref.current.press();
+
+    if (questions[currQuestion].correct === answer) {
+      numCorrectQuestions++;
+    }
+
+    //move to next question, or end the quiz if done
+    //if done, state final score with a "continue" button
+    //setAllowPlayer(true);
+    //when they press continue, go back to garden screen
   }
 }
