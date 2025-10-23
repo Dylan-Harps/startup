@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './quiz.css';
 import { QuizAnswers } from './quizAnswers';
+import { Question } from './question.js';
 
 export function Quiz(quizID) {
   const [allowPlayer, setAllowPlayer] = React.useState(false);
@@ -89,9 +90,9 @@ function getQuizQuestions(quizID) {
   }
 }
 
-React.useEffect(() => {
+//React.useEffect(() => {
     //idk
-}, []);
+//}, []);
 
 function onPressed(answer) {
   selectedAnswer = answer;
