@@ -1,48 +1,49 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './garden.css';
+import { Tile } from './tile.jsx';
 
 export function Garden() {
   return (
     <main className="container-fluid bg-secondary text-center">
-        <h1>Your Garden</h1>
+        <h1 className="garden-title">Your Garden</h1>
         <div className="garden-grid">
             <div className="garden-row">
-                <div className="tile" onclick="startLesson(1)">Lesson Name<br></br>Start Lesson</div>
-                <div className="tile" onclick="startLesson(2)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(3)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(4)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(5)">Start Lesson</div>
+                <Tile quizID="1" lessonName='Present "Yo" form'></Tile>
+                <Tile quizID="2" lessonName='Lesson Name'></Tile>
+                <Tile quizID="3" lessonName='Lesson Name'></Tile>
+                <Tile quizID="4" lessonName='Lesson Name'></Tile>
+                <Tile quizID="5" lessonName='Lesson Name'></Tile>
             </div>
             <div className="garden-row">
-                <div className="tile" onclick="startLesson(6)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(7)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(8)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(9)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(10)">Start Lesson</div>
+                <Tile quizID="6" lessonName='Lesson Name'></Tile>
+                <Tile quizID="7" lessonName='Lesson Name'></Tile>
+                <Tile quizID="8" lessonName='Lesson Name'></Tile>
+                <Tile quizID="9" lessonName='Lesson Name'></Tile>
+                <Tile quizID="10" lessonName='Lesson Name'></Tile>
             </div>
             <div className="garden-row">
-                <div className="tile" onclick="startLesson(11)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(12)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(13)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(14)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(15)">Start Lesson</div>
+                <Tile quizID="11" lessonName='Lesson Name'></Tile>
+                <Tile quizID="12" lessonName='Lesson Name'></Tile>
+                <Tile quizID="13" lessonName='Lesson Name'></Tile>
+                <Tile quizID="14" lessonName='Lesson Name'></Tile>
+                <Tile quizID="15" lessonName='Lesson Name'></Tile>
             </div>
             <div className="garden-row">
-                <div className="tile" onclick="startLesson(16)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(17)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(18)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(19)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(20)">Start Lesson</div>
+                <Tile quizID="16" lessonName='Lesson Name'></Tile>
+                <Tile quizID="17" lessonName='Lesson Name'></Tile>
+                <Tile quizID="18" lessonName='Lesson Name'></Tile>
+                <Tile quizID="19" lessonName='Lesson Name'></Tile>
+                <Tile quizID="20" lessonName='Lesson Name'></Tile>
             </div>
             <div className="garden-row">
-                <div className="tile" onclick="startLesson(21)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(22)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(23)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(24)">Start Lesson</div>
-                <div className="tile" onclick="startLesson(25)">Start Lesson</div>
+                <Tile quizID="21" lessonName='Lesson Name'></Tile>
+                <Tile quizID="22" lessonName='Lesson Name'></Tile>
+                <Tile quizID="23" lessonName='Lesson Name'></Tile>
+                <Tile quizID="24" lessonName='Lesson Name'></Tile>
+                <Tile quizID="25" lessonName='Lesson Name'></Tile>
             </div>
-        </div>  
+        </div>
     </main>
   );
 }
