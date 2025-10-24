@@ -40,7 +40,6 @@ let numCorrectQuestions = 0;
 let selectedAnswer = "";
 
 export function Quiz(quizID) {
-  const [allowPlayer, setAllowPlayer] = React.useState(false);
   const [currQuestionNumber, setCurrQuestionNumber] = React.useState(0);
   quizQuestions = getQuizQuestions(quizID).questions;
   currQuestion = quizQuestions[currQuestionNumber];
@@ -52,13 +51,9 @@ export function Quiz(quizID) {
         currQuestionNumber={currQuestionNumber} 
         numQuestions={quizLength}>
       </Progress>
-      <QuestionBox>
-      </QuestionBox>
-      <AnswerBox 
-        currQuestionNumber={currQuestionNumber}>
-      </AnswerBox>
-      <ConfirmationButton>
-      </ConfirmationButton>
+      <QuestionBox></QuestionBox>
+      <AnswerBox></AnswerBox>
+      <ConfirmationButton></ConfirmationButton>
     </main>
   );
 }
@@ -72,13 +67,13 @@ const QuestionBox = () => {
   );
 }
 
-const AnswerBox = (currQuestionNumber) => {
+const AnswerBox = () => {
   return (
     <div className="answer-options">
+      <AnswerButton position="0"></AnswerButton>
       <AnswerButton position="1"></AnswerButton>
       <AnswerButton position="2"></AnswerButton>
       <AnswerButton position="3"></AnswerButton>
-      <AnswerButton position="4"></AnswerButton>
     </div>
   );
 }
