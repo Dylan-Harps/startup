@@ -3,10 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './quiz.css';
 import { QuizAnswers } from './quizAnswers';
 import { Question } from './question.js';
+import { useLocation } from 'react-router-dom';
 
 function getQuizQuestions(quizID) {
   //for each Quiz, return an array containing each question, possible answers, and the correct answer
-  if (quizID === 1) {
+  if (quizID == 1) {
     const question1 = new Question("Fill in the Blank:", "Yo ___ mejorar mi español.", ["querer","quieres","quiero","quieras"], "quiero");
     const question2 = new Question("Fill in the Blank:", "Yo ___ el mejor.", ["es","soy","so","eres"], "soy");
     const question3 = new Question("Fill in the Blank:", "Yo ___ un gato.", ["tengo","tienes","teno","tienen"], "tengo");
@@ -23,8 +24,11 @@ function getQuizQuestions(quizID) {
   }
 }
 
-const Progress = (currQuestionNumber, numQuestions) => {
-  let percentage = 100 * currQuestionNumber / numQuestions;
+const Progress = (curr = 1, numQuestions = 5) => {
+  console.log("current question= " + parseInt(curr));
+  console.log("numQuestions= " + parseInt(numQuestions));
+  let percentage = 100 * (parseInt(curr) + 1) / parseInt(numQuestions);
+  console.log("percentage= " + percentage);
   return (
     <div className="quiz-progress">
       <div className="progress" role="progressbar" aria-valuenow={percentage} aria-valuemin="0" aria-valuemax={numQuestions}>
@@ -39,8 +43,11 @@ let currQuestion;
 let numCorrectQuestions = 0;
 let selectedAnswer = "";
 
-export function Quiz(quizID) {
-  const [currQuestionNumber, setCurrQuestionNumber] = React.useState(0);
+export function Quiz() {
+  const location = useLocation();
+  const quizID = location?.state?.id; //For some reason, all the ways to pass in a parameter to a route don't seem to work!!!
+  console.log("quizID= " + quizID);
+  const [currQuestionNumber, setCurrQuestionNumber] = React.useState(0); //For some reason, currQuestionNumbre = NaN
   quizQuestions = getQuizQuestions(quizID).questions;
   currQuestion = quizQuestions[currQuestionNumber];
   let quizLength = getQuizQuestions(quizID).quizLength;
@@ -48,7 +55,7 @@ export function Quiz(quizID) {
   return (
     <main className="container-fluid bg-secondary text-center" id="quizmain">
       <Progress 
-        currQuestionNumber={currQuestionNumber} 
+        curr={currQuestionNumber} 
         numQuestions={quizLength}>
       </Progress>
       <QuestionBox></QuestionBox>
