@@ -1,11 +1,11 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import './quiz.css';
 import { QuizAnswers } from './quizAnswers';
 import { Question } from './question.js';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function getQuizQuestions(quizID) {
   //for each Quiz, return an array containing each question, possible answers, and the correct answer
@@ -143,9 +143,10 @@ const Completion = () => {
 }
 
 const ContinueButton = () => {
+  const navigate = useNavigate();
   return (
     <button className="btn btn-primary confirm-answer"
-    onClick={() => onConfirm(curr, setCurr)}>
+    onClick={() => navigate(-1)}>
       Return to Garden
     </button>
   );
