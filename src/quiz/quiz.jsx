@@ -39,21 +39,34 @@ export function Quiz() {
   myQuiz = getQuizQuestions(quizID);
   quizQuestions = myQuiz.questions;
   currQuestion = quizQuestions[currQuestionNumber];
-  
-  return (
-    <main className="container-fluid bg-secondary text-center" id="quizmain">
-      <Progress 
-        curr={currQuestionNumber}
-        numQuestions={myQuiz.quizLength}>
-      </Progress>
-      <QuestionBox></QuestionBox>
-      <AnswerBox></AnswerBox>
-      <ConfirmationButton
-        curr = {currQuestionNumber}
-        setCurr = {setCurrQuestionNumber}>
-      </ConfirmationButton>
-    </main>
-  );
+  if (currQuestionNumber === myQuiz.quizLength) {
+    //if at the end of the quiz, render a "Quiz Complete!" screen 
+    return (
+      <main className="container-fluid bg-secondary text-center" id="quizmain">
+        <Progress 
+          curr={currQuestionNumber}
+          numQuestions={myQuiz.quizLength}>
+        </Progress>
+        <Completion></Completion>
+        <ContinueButton></ContinueButton>
+      </main>
+    );
+  } else {
+    return (
+      <main className="container-fluid bg-secondary text-center" id="quizmain">
+        <Progress 
+          curr={currQuestionNumber}
+          numQuestions={myQuiz.quizLength}>
+        </Progress>
+        <QuestionBox></QuestionBox>
+        <AnswerBox></AnswerBox>
+        <ConfirmationButton
+          curr = {currQuestionNumber}
+          setCurr = {setCurrQuestionNumber}>
+        </ConfirmationButton>
+      </main>
+    );
+  }
 }
 
 const Progress = ({curr} = 1, numQuestions = 5) => {
@@ -64,6 +77,7 @@ const Progress = ({curr} = 1, numQuestions = 5) => {
     </div>
   );
 }
+
 const QuestionBox = () => {
   return (
       <div className="question-box">
@@ -116,10 +130,23 @@ function onConfirm(curr, setCurr) {
   }
   console.log("onConfirm: numCorrectQuestions= " + numCorrectQuestions);
   selectedAnswer = "";
-  if (curr + 1 === myQuiz.quizLength) {
-    //finsihed quiz!
-    //show final score and a continue button which returns them to the garden
-  } else {
-    setCurr(curr + 1); //move on to the next question
-  }
+  setCurr(curr + 1); //move on to the next question
+}
+
+const Completion = () => {
+  return (
+      <div className="question-box">
+        <div className="congrats">Nice Job!</div>
+        <div className="score-report">You scored {numCorrectQuestions} out of {myQuiz.quizLength}</div>
+      </div>
+  );
+}
+
+const ContinueButton = () => {
+  return (
+    <button className="btn btn-primary confirm-answer"
+    onClick={() => onConfirm(curr, setCurr)}>
+      Return to Garden
+    </button>
+  );
 }

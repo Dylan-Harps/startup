@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './garden.css';
 import { Tile } from './tile.jsx';
 
+//use useEffect() so that whenever the plantState changes, it rerenders the plant or something 
+
 export function Garden() {
   return (
     <main className="container-fluid bg-secondary text-center">
