@@ -26,6 +26,7 @@ function getQuizQuestions(quizID) {
   }
 }
 
+let myQuiz;
 let quizQuestions;
 let currQuestion;
 let numCorrectQuestions = 0;
@@ -35,23 +36,22 @@ export function Quiz() {
   const location = useLocation();
   const quizID = location.state.id;
   const [currQuestionNumber, setCurrQuestionNumber] = React.useState(0);
-  let quizLength = getQuizQuestions(quizID).quizLength;
-  quizQuestions = getQuizQuestions(quizID).questions;
+  myQuiz = getQuizQuestions(quizID);
+  quizQuestions = myQuiz.questions;
   currQuestion = quizQuestions[currQuestionNumber];
   
-  console.log("quizID= " + quizID);
-  console.log("currQuestionNumber= " + currQuestionNumber);
-  console.log("currQuestion= " + JSON.stringify(currQuestion));
-
   return (
     <main className="container-fluid bg-secondary text-center" id="quizmain">
       <Progress 
-        curr={currQuestionNumber + 1}
-        numQuestions={quizLength}>
+        curr={currQuestionNumber}
+        numQuestions={myQuiz.quizLength}>
       </Progress>
       <QuestionBox></QuestionBox>
       <AnswerBox></AnswerBox>
-      <ConfirmationButton></ConfirmationButton>
+      <ConfirmationButton
+        curr = {currQuestionNumber}
+        setCurr = {setCurrQuestionNumber}>
+      </ConfirmationButton>
     </main>
   );
 }
@@ -84,7 +84,7 @@ const AnswerBox = () => {
   );
 }
 
-const AnswerButton = (position) => {
+const AnswerButton = ({position}) => {
   let option = currQuestion.answers[position];
   return (
     <button className="btn btn-outline-primary option"
@@ -94,26 +94,32 @@ const AnswerButton = (position) => {
   );
 }
 
-const ConfirmationButton = () => {
+function onPressed({option}) {
+  selectedAnswer = option;
+  console.log("onPressed: selectedAnswer= " + selectedAnswer);
+}
+
+const ConfirmationButton = ({curr, setCurr}) => {
   return (
     <button className="btn btn-primary confirm-answer"
-    onClick={() => onConfirm()}>
+    onClick={() => onConfirm(curr, setCurr)}>
       Confirm Answer
     </button>
   );
 }
 
-function onPressed(answer) {
-  selectedAnswer = answer;
-}
-
-function onConfirm() {
+function onConfirm(curr, setCurr) {
+  console.log("onConfirm: correctAnswer= " + currQuestion.correct);
+  console.log("onConfirm: curr= " + curr);
   if (currQuestion.correct === selectedAnswer) {
     numCorrectQuestions++;
   }
+  console.log("onConfirm: numCorrectQuestions= " + numCorrectQuestions);
   selectedAnswer = "";
-
-  //move to next question, or end the quiz if done
-  //if done, state final score with a "continue" button
-  //when they press continue, go back to garden screen
+  if (curr + 1 === myQuiz.quizLength) {
+    //finsihed quiz!
+    //show final score and a continue button which returns them to the garden
+  } else {
+    setCurr(curr + 1); //move on to the next question
+  }
 }
