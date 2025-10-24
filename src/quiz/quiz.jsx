@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import './quiz.css';
@@ -32,15 +33,16 @@ let selectedAnswer = "";
 
 export function Quiz() {
   const location = useLocation();
-  const quizID = location?.state?.id; //For some reason, all the ways to pass in a parameter to a route don't seem to work!!!
-  console.log("quizID= " + quizID);
+  const quizID = location.state.id;
   const [currQuestionNumber, setCurrQuestionNumber] = React.useState(0);
-  console.log("currQuestionNumber= " + currQuestionNumber);
-  quizQuestions = getQuizQuestions(1).questions;
+  let quizLength = getQuizQuestions(quizID).quizLength;
+  quizQuestions = getQuizQuestions(quizID).questions;
   currQuestion = quizQuestions[currQuestionNumber];
-  console.log("currQuestion= " + JSON.stringify(currQuestion));
-  let quizLength = getQuizQuestions(1).quizLength;
   
+  console.log("quizID= " + quizID);
+  console.log("currQuestionNumber= " + currQuestionNumber);
+  console.log("currQuestion= " + JSON.stringify(currQuestion));
+
   return (
     <main className="container-fluid bg-secondary text-center" id="quizmain">
       <Progress 

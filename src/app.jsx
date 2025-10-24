@@ -59,7 +59,7 @@ function App() {
                         exact
                     />
                     <Route path='/garden' element={<Garden />} />
-                    <Route path='/quiz' element={<Quiz />} />
+                    <Route path='/garden/quiz' element={<Quiz />} />
                     <Route path='/about' element={<About />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>

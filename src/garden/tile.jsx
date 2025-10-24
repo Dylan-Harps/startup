@@ -10,7 +10,7 @@ export const Tile = ({id = 1, lessonName = "Untitled"}) => {
         <div className="tile">
             {lessonName}
             <br></br>
-            <Button variant='primary' onClick={() => navigate(`/quiz`, {state: {id: {id}}})}>
+            <Button variant='primary' onClick={() => navigate(`quiz`, {state: {id: id}})}>
                 Start Quiz
             </Button>
         </div>
