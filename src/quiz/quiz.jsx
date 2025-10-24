@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import './quiz.css';
 import { QuizAnswers } from './quizAnswers';
 import { Question } from './question.js';
@@ -24,20 +25,6 @@ function getQuizQuestions(quizID) {
   }
 }
 
-const Progress = (curr = 1, numQuestions = 5) => {
-  console.log("current question= " + parseInt(curr));
-  console.log("numQuestions= " + parseInt(numQuestions));
-  let percentage = 100 * (parseInt(curr) + 1) / parseInt(numQuestions);
-  console.log("percentage= " + percentage);
-  return (
-    <div className="quiz-progress">
-      <div className="progress" role="progressbar" aria-valuenow={percentage} aria-valuemin="0" aria-valuemax={numQuestions}>
-        <div className="progress-bar progress-bar-striped">{percentage}%</div>
-      </div>
-    </div>
-  );
-}
-
 let quizQuestions;
 let currQuestion;
 let numCorrectQuestions = 0;
@@ -47,15 +34,17 @@ export function Quiz() {
   const location = useLocation();
   const quizID = location?.state?.id; //For some reason, all the ways to pass in a parameter to a route don't seem to work!!!
   console.log("quizID= " + quizID);
-  const [currQuestionNumber, setCurrQuestionNumber] = React.useState(0); //For some reason, currQuestionNumbre = NaN
-  quizQuestions = getQuizQuestions(quizID).questions;
+  const [currQuestionNumber, setCurrQuestionNumber] = React.useState(0);
+  console.log("currQuestionNumber= " + currQuestionNumber);
+  quizQuestions = getQuizQuestions(1).questions;
   currQuestion = quizQuestions[currQuestionNumber];
-  let quizLength = getQuizQuestions(quizID).quizLength;
+  console.log("currQuestion= " + JSON.stringify(currQuestion));
+  let quizLength = getQuizQuestions(1).quizLength;
   
   return (
     <main className="container-fluid bg-secondary text-center" id="quizmain">
       <Progress 
-        curr={currQuestionNumber} 
+        curr={currQuestionNumber + 1}
         numQuestions={quizLength}>
       </Progress>
       <QuestionBox></QuestionBox>
@@ -65,6 +54,14 @@ export function Quiz() {
   );
 }
 
+const Progress = ({curr} = 1, numQuestions = 5) => {
+  let percentage = 100 * parseInt(curr) / parseInt(numQuestions);
+  return (
+    <div className="quiz-progress">
+      <ProgressBar animated now={percentage} label={`${percentage}%`}/>
+    </div>
+  );
+}
 const QuestionBox = () => {
   return (
       <div className="question-box">

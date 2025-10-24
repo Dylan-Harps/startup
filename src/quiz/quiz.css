@@ -7,7 +7,7 @@
 }
 
 .progress-bar {
-    width: 20%
+    background-color: orangered;
 }
 
 .quiz-progress {
