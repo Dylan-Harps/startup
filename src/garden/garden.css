@@ -45,3 +45,9 @@
     transform: rotateZ(-45deg) rotateX(0deg); /*rotate3d(1, -1, 0, -60deg); /*Undo Isometric view*/
     transform-origin: center;
 }
+
+.popover {
+    position: relative;
+    top: 10%;
+    left: -100%;
+}

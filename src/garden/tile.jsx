@@ -7,17 +7,20 @@ import sprout from '/public/sprout.png';
 import grown from '/public/grown.png';
 import withered from '/public/withered.png';
 
-export const Tile = ({id = 1, lessonName = "Untitled"}) => {
+export const Tile = ({id, lessonName = "Untitled"}) => {
     const [plantState, setPlantState] = React.useState("sprout");
-    const navigate = useNavigate();
-    
+    console.log(`plantState${id}= ` + localStorage.getItem(`tile${id}`));
+    if (localStorage.getItem(`tile${id}`)) {
+        setPlantState(localStorage.getItem(`tile${id}`));
+    }
     return (
         <div className="tile">
             <OverlayTrigger
                 container={this}
                 trigger="click"
+                rootClose
                 placement="bottom"
-                overlay={popoverBottom({lessonName})}
+                overlay={popoverBottom({lessonName}, {id}, setPlantState)}
                 >
                 <div><Plant state={plantState} /></div>
             </OverlayTrigger>
@@ -35,12 +38,14 @@ const Plant = ({state}) => {
     } 
 }
 
-const popoverBottom = ({lessonName}) => {
+const popoverBottom = ({lessonName, id, setPlantState}) => {
+    const navigate = useNavigate();
     return (
-        <Popover id="popover-positioned-bottom" title={lessonName}>
+        <Popover className="popover" id="popover-positioned-bottom" title={lessonName}>
             <Button variant='primary' onClick={() => {
+                    //{setPlantState}((plantState) => {"grown"});
+                    if (!localStorage.getItem(`tile${id}`)) {localStorage.setItem(`tile${id}`, "grown");}
                     navigate(`quiz`, {state: {id: id}});
-                    setPlantState("grown");
                 }}>
                 Start Quiz
             </Button>
