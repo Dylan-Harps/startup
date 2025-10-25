@@ -26,6 +26,8 @@
     border: 1px solid black;
     position: relative;
     display: inline-block;
+    transform-style: preserve-3d;
+    z-index: 1;
 }
 
 .tile:hover {
@@ -33,7 +35,13 @@
 }
 
 .plant {
-    width: 10px;
-    transform: rotateZ(-45deg) rotate3d(1, -1, 0, -60deg); /*Isometric view*/
+    position: absolute;
+    width: 70%;
+    height: 120%;
+    top: -10%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    transform: rotateZ(-45deg) rotateX(0deg); /*rotate3d(1, -1, 0, -60deg); /*Undo Isometric view*/
     transform-origin: center;
 }

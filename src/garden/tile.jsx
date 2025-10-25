@@ -1,4 +1,6 @@
 import React from 'react';
+import Popover from 'react-bootstrap/Popover';
+import { OverlayTrigger } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import sprout from '/public/sprout.png';
@@ -11,24 +13,37 @@ export const Tile = ({id = 1, lessonName = "Untitled"}) => {
     
     return (
         <div className="tile">
-            {lessonName}
-            <Plant className="plant" state={plantState} />
-            <Button variant='primary' onClick={() => {
-                    navigate(`quiz`, {state: {id: id}});
-                    setPlantState("grown");
-                }}>
-                Start Quiz
-            </Button>
+            <OverlayTrigger
+                container={this}
+                trigger="click"
+                placement="bottom"
+                overlay={popoverBottom({lessonName})}
+                >
+                <div><Plant state={plantState} /></div>
+            </OverlayTrigger>
         </div>
     );
 }
 
 const Plant = ({state}) => {
     if (state === "sprout") {
-        return(<img src={sprout}/>);
+        return(<img className="plant" src={sprout}/>);
     } else if (state === "grown") {
-        return(<img src={grown}/>);
+        return(<img className="plant" src={grown}/>);
     } else if (state === "withered") {
-        return(<img src={withered}/>);
+        return(<img className="plant" src={withered}/>);
     } 
 }
+
+const popoverBottom = ({lessonName}) => {
+    return (
+        <Popover id="popover-positioned-bottom" title={lessonName}>
+            <Button variant='primary' onClick={() => {
+                    navigate(`quiz`, {state: {id: id}});
+                    setPlantState("grown");
+                }}>
+                Start Quiz
+            </Button>
+        </Popover>
+    );
+};
