@@ -9,10 +9,8 @@ import withered from '/public/withered.png';
 
 export const Tile = ({id, lessonName = "Untitled"}) => {
     const [plantState, setPlantState] = React.useState("sprout");
-    console.log(`plantState${id}= ` + localStorage.getItem(`tile${id}`));
-    if (localStorage.getItem(`tile${id}`)) {
-        setPlantState(localStorage.getItem(`tile${id}`));
-    }
+    //<button onClick={setPlantState("grown")}>test</button>
+    console.log(`tile${id}=` + localStorage.getItem(`tile${id}`));
     return (
         <div className="tile">
             <OverlayTrigger
@@ -20,7 +18,7 @@ export const Tile = ({id, lessonName = "Untitled"}) => {
                 trigger="click"
                 rootClose
                 placement="bottom"
-                overlay={popoverBottom({lessonName}, {id}, setPlantState)}
+                overlay={popoverBottom({lessonName}, {id})}
                 >
                 <div><Plant state={plantState} /></div>
             </OverlayTrigger>
@@ -38,15 +36,14 @@ const Plant = ({state}) => {
     } 
 }
 
-const popoverBottom = ({lessonName, id, setPlantState}) => {
+const popoverBottom = ({lessonName}, {id}) => {
     const navigate = useNavigate();
     return (
         <Popover className="popover" id="popover-positioned-bottom" title={lessonName}>
             <Button variant='primary' onClick={() => {
-                    //{setPlantState}((plantState) => {"grown"});
-                    if (!localStorage.getItem(`tile${id}`)) {localStorage.setItem(`tile${id}`, "grown");}
-                    navigate(`quiz`, {state: {id: id}});
-                }}>
+                localStorage.setItem(`tile${id}`, "grown"); //for some reason, this is being called despite not being clicked
+                navigate(`quiz`, {state: {id: id}});
+            }}>
                 Start Quiz
             </Button>
         </Popover>
