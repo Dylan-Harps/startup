@@ -110,7 +110,7 @@ const AnswerButton = ({position}) => {
 
 function onPressed({option}) {
   selectedAnswer = option;
-  console.log("onPressed: selectedAnswer= " + selectedAnswer);
+  //console.log("onPressed: selectedAnswer= " + selectedAnswer);
 }
 
 const ConfirmationButton = ({curr, setCurr}) => {
@@ -123,12 +123,12 @@ const ConfirmationButton = ({curr, setCurr}) => {
 }
 
 function onConfirm(curr, setCurr) {
-  console.log("onConfirm: correctAnswer= " + currQuestion.correct);
-  console.log("onConfirm: curr= " + curr);
+  //console.log("onConfirm: correctAnswer= " + currQuestion.correct);
+  //console.log("onConfirm: curr= " + curr);
   if (currQuestion.correct === selectedAnswer) {
     numCorrectQuestions++;
   }
-  console.log("onConfirm: numCorrectQuestions= " + numCorrectQuestions);
+  //console.log("onConfirm: numCorrectQuestions= " + numCorrectQuestions);
   selectedAnswer = "";
   setCurr(curr + 1); //move on to the next question
 }
@@ -144,6 +144,7 @@ const Completion = () => {
 
 const ContinueButton = () => {
   const navigate = useNavigate();
+  numCorrectQuestions = 0;
   return (
     <button className="btn btn-primary confirm-answer"
     onClick={() => navigate(-1)}>

@@ -4,8 +4,7 @@
 }
 
 .garden-grid {
-    /*Isometric view*/
-    transform: rotateZ(45deg) rotate3d(1, -1, 0, 60deg);
+    transform: rotateZ(45deg) rotate3d(1, -1, 0, 60deg); /*Isometric view*/
     transform-origin: center;
 
     display: inline-block;
@@ -23,7 +22,7 @@
 .tile {
     width: 10vw;
     height: 10vw;
-    background-color: lightgray;
+    background-color: rgb(93, 53, 16);
     border: 1px solid black;
     position: relative;
     display: inline-block;
@@ -31,4 +30,10 @@
 
 .tile:hover {
     background-color: gray;
+}
+
+.plant {
+    width: 10px;
+    transform: rotateZ(-45deg) rotate3d(1, -1, 0, -60deg); /*Isometric view*/
+    transform-origin: center;
 }
