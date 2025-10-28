@@ -110,8 +110,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [x] **Hooks** - Use of `useState`
+- [x] **All functionality implemented or mocked out** - Used local storage to store plant states. WebSocket (to wither the plants) mocked with a timer.
+- [x] **Hooks** - Use of `useState` (for quiz questions and plantStates) and `useEffect` (for plant withering)
 
 ## 🚀 Service deliverable
 
