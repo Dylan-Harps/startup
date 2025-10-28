@@ -9,12 +9,35 @@ import grown from '/public/grown.png';
 import withered from '/public/withered.png';
 
 export const Tile = ({id, lessonName = "Untitled"}) => {
-    const [plantState, setPlantState] = React.useState("sprout");
     const ref = useRef(null);
-    const storedState = localStorage.getItem(`tile${id}`);
-    if (plantState != storedState) {
-        setPlantState(storedState);
-    }
+    const storedState = typeof window !== 'undefined' ? localStorage.getItem(`tile${id}`) : null;
+    const [plantState, setPlantState] = React.useState(storedState || 'sprout');
+
+    //Plants wither over time. Will be implemented later with WebSocket
+    const LIFETIME = 10 * 1000;
+    const timerRef = React.useRef(null);
+    React.useEffect(() => {
+        try { if (typeof window !== 'undefined') localStorage.setItem(`tile${id}`, plantState); } catch (e) { }
+
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+            timerRef.current = null;
+        }
+
+        if (plantState !== 'grown') { return undefined; }
+
+        timerRef.current = setTimeout(() => {
+            setPlantState('withered');
+            try { if (typeof window !== 'undefined') localStorage.setItem(`tile${id}`, 'withered'); } catch (e) { }
+            timerRef.current = null;
+        }, LIFETIME);
+
+        return () => {
+            if (timerRef.current) clearTimeout(timerRef.current);
+            timerRef.current = null;
+        };
+    }, [plantState, id]);
+
     //stack tiles according to their id
     const numericId = Number(id) || 0;
     const baseZ = 100 - Math.floor(numericId / 5) - (numericId % 5);
