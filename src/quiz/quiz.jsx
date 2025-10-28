@@ -39,6 +39,7 @@ export function Quiz() {
   myQuiz = getQuizQuestions(quizID);
   quizQuestions = myQuiz.questions;
   currQuestion = quizQuestions[currQuestionNumber];
+  
   if (currQuestionNumber === myQuiz.quizLength) {
     //if at the end of the quiz, render a "Quiz Complete!" screen 
     return (
@@ -48,7 +49,7 @@ export function Quiz() {
           numQuestions={myQuiz.quizLength}>
         </Progress>
         <Completion></Completion>
-        <ContinueButton></ContinueButton>
+        <ContinueButton id={quizID}></ContinueButton>
       </main>
     );
   } else {
@@ -142,12 +143,15 @@ const Completion = () => {
   );
 }
 
-const ContinueButton = () => {
+const ContinueButton = ({id}) => {
   const navigate = useNavigate();
   numCorrectQuestions = 0;
   return (
     <button className="btn btn-primary confirm-answer"
-    onClick={() => navigate(-1)}>
+    onClick={() => {
+      localStorage.setItem(`tile${id}`, "grown");
+      navigate(-1);
+      }}>
       Return to Garden
     </button>
   );

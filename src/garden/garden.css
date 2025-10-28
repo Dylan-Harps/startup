@@ -6,10 +6,12 @@
 .garden-grid {
     transform: rotateZ(45deg) rotate3d(1, -1, 0, 60deg); /*Isometric view*/
     transform-origin: center;
+    transform-style: preserve-3d;
 
     display: inline-block;
     vertical-align: middle;
     position: absolute;
+    z-index: 0;
 }
 
 .garden-row {
@@ -36,12 +38,12 @@
 
 .plant {
     position: absolute;
-    width: 70%;
+    /**/width: 70%;
     height: 120%;
     top: -10%;
     left: 15%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
+    transform: translate(-50%, -50%);/**/
+    z-index: 100;
     transform: rotateZ(-45deg) rotateX(0deg); /*rotate3d(1, -1, 0, -60deg); /*Undo Isometric view*/
     transform-origin: center;
 }
@@ -50,4 +52,8 @@
     position: relative;
     top: 10%;
     left: -100%;
+}
+
+.startButton {
+    margin: 0px;
 }
