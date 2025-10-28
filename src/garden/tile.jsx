@@ -4,9 +4,9 @@ import Popover from 'react-bootstrap/Popover';
 import { OverlayTrigger } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import sprout from '/public/sprout.png';
-import grown from '/public/grown.png';
-import withered from '/public/withered.png';
+import sprout from '/sprout.png';
+import grown from '/grown.png';
+import withered from '/withered.png';
 
 export const Tile = ({id, lessonName = "Untitled"}) => {
     const ref = useRef(null);
