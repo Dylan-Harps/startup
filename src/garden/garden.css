@@ -11,7 +11,7 @@
     display: inline-block;
     vertical-align: middle;
     position: absolute;
-    z-index: 0;
+    overflow: visible;
 }
 
 .garden-row {
@@ -29,31 +29,44 @@
     position: relative;
     display: inline-block;
     transform-style: preserve-3d;
-    z-index: 1;
 }
 
 .tile:hover {
     background-color: gray;
 }
 
+.tile-debug {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: rgba(255,0,0,0.08);
+    border-top: 1px dashed rgba(255,0,0,0.6);
+    color: rgba(0,0,0,0.75);
+    font-size: 10px;
+    line-height: 1.2;
+    padding: 2px 4px;
+    pointer-events: none;
+}
+
+.garden-grid.debug .tile-debug,
+body.debug .garden-grid .tile-debug {
+    display: block;
+}
+
 .plant {
     position: absolute;
     /**/width: 70%;
-    height: 120%;
-    top: -10%;
+    height: 140%;
+    top: -20%;
     left: 15%;
     transform: translate(-50%, -50%);/**/
-    z-index: 100;
-    transform: rotateZ(-45deg) rotateX(0deg); /*rotate3d(1, -1, 0, -60deg); /*Undo Isometric view*/
+    transform: rotateZ(-45deg); /*rotate3d(1, -1, 0, -60deg); /*Undo Isometric view*/
     transform-origin: center;
 }
 
-.popover {
-    position: relative;
-    top: 10%;
-    left: -100%;
-}
-
-.startButton {
+.start-button {
     margin: 0px;
 }
